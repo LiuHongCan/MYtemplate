@@ -1,0 +1,9 @@
+2020-10-24 19:30:18,474 id:20 【testadduser】【test01】第47行，INFO：用户名输入成功 test0001293033
+2020-10-24 19:30:18,619 id:20 【testadduser】【test01】第49行，INFO：真实姓名输入成功 老万
+2020-10-24 19:30:18,736 id:20 【testadduser】【test01】第51行，INFO：性别选择成功 0
+2020-10-24 19:30:18,858 id:20 【testadduser】【test01】第53行，INFO：部门选择成功 /测试部
+2020-10-24 19:30:18,966 id:20 【testadduser】【test01】第55行，INFO：角色选择成功 研发
+2020-10-24 19:30:19,120 id:20 【testadduser】【test01】第57行，INFO：密码1输入成功 123456
+2020-10-24 19:30:19,296 id:20 【testadduser】【test01】第59行，INFO：密码2输入成功 123456
+2020-10-24 19:30:19,508 id:20 【testadduser】【test01】第61行，INFO：邮箱输入成功 293033test0001@163.com
+2020-10-24 19:30:19,623 id:20 【testadduser】【test01】第63行，INFO：保存成功

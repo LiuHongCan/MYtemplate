@@ -1,0 +1,8 @@
+论坛URL：http://192.168.50.128:8080/jforum-2.6.2/
+管理员：Admin
+密码：123456
+
+关闭jforum验证码
+修改/usr/local/tomcat/webapps/jforum-2.6.2/WEB-INF/config/SystemGlobals.properties文件，把如下两个配置改成false
+captcha.registration = false
+captcha.posts = false

@@ -1,0 +1,15 @@
+{
+  "LoginSuccess": {"JSFormSubmit": "off",
+                   "username": "jojo",
+                   "password": "bean",
+                   "login.y": "9",
+                   "login.x": "49"
+                   },
+  "HomePage": {"page":"menu",
+              "in":"home"},
+  "RanzhiLogin": {
+                  "mobilephone": "15982818289",
+                  "pwd": "123456",
+                  "regname": "来福"
+                  }
+}

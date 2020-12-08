@@ -95,6 +95,6 @@ if __name__ == '__main__':
     #     if rm.exceldata.read_case_execute_branch(row):
     #         print(rm.get_response(row))
 
-    print(rm.get_regular_actual(7))
+    print(rm.get_regular_actual(2))
 
 

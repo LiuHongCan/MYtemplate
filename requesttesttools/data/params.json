@@ -1,0 +1,53 @@
+{
+  "TEST_PARAMS": {
+    "appid": "wxd5647f839d12c83a",
+    "clienttype": "wxapp",
+    "version": "3.0.0",
+    "mpkey": "mp_f0eecb40-23e0-11eb-8fd0-bbf1de6a814e",
+    "mininfo_id": "564",
+    "ms_session": "session:6d914730-44bc-11eb-b0d3-87514629a1ec",
+    "productcode": "ksuperminiapp",
+    "goods_id": "1593",
+    "store_id": "0"
+  },
+  "HEADERS_TEST1": {
+          "Accept":"*/*",
+          "Accept-Encoding":"gzip, deflate, br",
+          "appid":"wxd5647f839d12c83a",
+          "clienttype":"wxapp",
+          "Connection":"keep-alive",
+          "content-type":"application/json",
+          "Host":"test-service.iwanshang.cloud",
+          "mininfo_id":"564",
+          "mpkey":"mp_f0eecb40-23e0-11eb-8fd0-bbf1de6a814e",
+          "ms_session":"session:136960d0-613b-11eb-b1f2-4de4946d79ce",
+          "productcode":"ksuperminiapp",
+          "Referer":"https://servicewechat.com/wxd5647f839d12c83a/devtools/page-frame.html",
+          "sec-ch-ua":"nwjs 75",
+          "Sec-Fetch-Dest":"empty",
+          "Sec-Fetch-Mode":"cors",
+          "Sec-Fetch-Site":"cross-site",
+          "User-Agent":"Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1 wechatdevtools/1.03.2101150 MicroMessenger/7.0.4 Language/zh_CN webview/",
+          "version":"3.0.0"
+  },
+  "TEST_PARAMS_002": {
+    "appid":"wxd5647f839d12c83a",
+    "clienttype":"wxapp",
+    "version":"3.0.0",
+    "mpkey":"mp_f0eecb40-23e0-11eb-8fd0-bbf1de6a814e",
+    "mininfo_id":"564",
+    "ms_session":"session:136960d0-613b-11eb-b1f2-4de4946d79ce",
+    "productcode":"ksuperminiapp",
+    "pageIndex":"1",
+    "pageSize":"10",
+    "keyword":"goods_name",
+    "keyvalue":"测试",
+    "order":"asc",
+    "storeId":"0"
+  },
+  "HEADERS_TEST_002": {
+    "User-Agent": "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.104 Safari/537.36"
+  },
+  "TEST_PARAMS_005" : {"cart_isbuynow":1,"cart_goodsid":1625,"cart_number":1,"cart_goodsattr":"","cart_goodstype":0,"extension_id":""},
+  "TEST_PARAMS_006" : {"live_event_id":"","userbargain_id":"","isEquity":true,"mpkey":"mp_f0eecb40-23e0-11eb-8fd0-bbf1de6a814e","isbuynow":"1","cartids":"35038","remark":"","payid":"","volumeid":"","favourablecardid":0,"favourablecardvalue":"0.00","redpacketid":"","orderactiveid":"","orderactiveindex":"","addrid":116,"extensiontype":0,"fronturl":"","distributorid":0,"clienttype":"wxapp","team_act_id":"","team_id":0,"is_privilege":0,"egoods_id":"","productcode":"ksuperminiapp","storeId":"","equityId":832,"useIntegral":0,"storeUserName":"","storeUserMobile":"","taskId":"","userId":"","businessIds":"","forwardKey":""}
+}

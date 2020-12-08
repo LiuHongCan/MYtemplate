@@ -1,0 +1,5 @@
+2021-01-29 16:24:25,141  [requestmd -- getresponse -- 第72行]，INFO：用例名：访问百度
+2021-01-29 16:24:25,142  [requestmd -- sendrequest -- 第31行]，INFO：Headers:{'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.104 Safari/537.36'}
+2021-01-29 16:24:25,143  [requestmd -- sendrequest -- 第34行]，INFO：Method:GET
+2021-01-29 16:24:25,144  [requestmd -- sendrequest -- 第36行]，INFO：参数:None
+2021-01-29 16:24:25,145  [requestmd -- sendrequest -- 第38行]，INFO：URL:https://www.baidu.com

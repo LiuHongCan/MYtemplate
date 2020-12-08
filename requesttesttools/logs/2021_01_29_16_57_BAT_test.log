@@ -1,0 +1,20 @@
+2021-01-29 16:57:57,327  [requestmd -- getresponse -- 第72行]，INFO：用例名：访问个人中心
+2021-01-29 16:57:57,329  [requestmd -- sendrequest -- 第31行]，INFO：Headers:{'Accept': '*/*', 'Accept-Encoding': 'gzip, deflate, br', 'appid': 'wxd5647f839d12c83a', 'clienttype': 'wxapp', 'Connection': 'keep-alive', 'content-type': 'application/json', 'Host': 'test-service.iwanshang.cloud', 'mininfo_id': '564', 'mpkey': 'mp_f0eecb40-23e0-11eb-8fd0-bbf1de6a814e', 'ms_session': 'session:00cf6080-61ce-11eb-b1f2-4de4946d79ce', 'productcode': 'ksuperminiapp', 'Referer': 'https://servicewechat.com/wxd5647f839d12c83a/devtools/page-frame.html', 'sec-ch-ua': 'nwjs 75', 'Sec-Fetch-Dest': 'empty', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Site': 'cross-site', 'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1 wechatdevtools/1.03.2101150 MicroMessenger/7.0.4 Language/zh_CN webview/', 'version': '3.0.0'}
+2021-01-29 16:57:57,330  [requestmd -- sendrequest -- 第34行]，INFO：Method:GET
+2021-01-29 16:57:57,333  [requestmd -- sendrequest -- 第36行]，INFO：参数:None
+2021-01-29 16:57:57,334  [requestmd -- sendrequest -- 第38行]，INFO：URL:https://test-service.iwanshang.cloud/ksuperminiapp/api/shop/shoporder/countOrder?appid=wxd5647f839d12c83a&clienttype=wxapp&version=3.0.0&mpkey=mp_f0eecb40-23e0-11eb-8fd0-bbf1de6a814e&mininfo_id=564&ms_session=session%3A00cf6080-61ce-11eb-b1f2-4de4946d79ce&productcode=ksuperminiapp
+2021-01-29 16:57:57,668  [requestmd -- getresponse -- 第72行]，INFO：用例名：搜索商品
+2021-01-29 16:57:57,670  [requestmd -- sendrequest -- 第31行]，INFO：Headers:{'Accept': '*/*', 'Accept-Encoding': 'gzip, deflate, br', 'appid': 'wxd5647f839d12c83a', 'clienttype': 'wxapp', 'Connection': 'keep-alive', 'content-type': 'application/json', 'Host': 'test-service.iwanshang.cloud', 'mininfo_id': '564', 'mpkey': 'mp_f0eecb40-23e0-11eb-8fd0-bbf1de6a814e', 'ms_session': 'session:00cf6080-61ce-11eb-b1f2-4de4946d79ce', 'productcode': 'ksuperminiapp', 'Referer': 'https://servicewechat.com/wxd5647f839d12c83a/devtools/page-frame.html', 'sec-ch-ua': 'nwjs 75', 'Sec-Fetch-Dest': 'empty', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Site': 'cross-site', 'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1 wechatdevtools/1.03.2101150 MicroMessenger/7.0.4 Language/zh_CN webview/', 'version': '3.0.0'}
+2021-01-29 16:57:57,673  [requestmd -- sendrequest -- 第34行]，INFO：Method:GET
+2021-01-29 16:57:57,675  [requestmd -- sendrequest -- 第36行]，INFO：参数:{'appid': 'wxd5647f839d12c83a', 'clienttype': 'wxapp', 'version': '3.0.0', 'mpkey': 'mp_f0eecb40-23e0-11eb-8fd0-bbf1de6a814e', 'mininfo_id': '564', 'ms_session': 'session:00cf6080-61ce-11eb-b1f2-4de4946d79ce', 'productcode': 'ksuperminiapp', 'pageIndex': '1', 'pageSize': '10', 'keyword': 'goods_name', 'keyvalue': '测试', 'order': 'asc', 'storeId': '0'}
+2021-01-29 16:57:57,677  [requestmd -- sendrequest -- 第38行]，INFO：URL:https://test-service.iwanshang.cloud/ksuperminiapp/api/goods/base/list
+2021-01-29 16:57:58,603  [requestmd -- getresponse -- 第72行]，INFO：用例名：访问百度
+2021-01-29 16:57:58,605  [requestmd -- sendrequest -- 第31行]，INFO：Headers:{'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.104 Safari/537.36'}
+2021-01-29 16:57:58,607  [requestmd -- sendrequest -- 第34行]，INFO：Method:GET
+2021-01-29 16:57:58,610  [requestmd -- sendrequest -- 第36行]，INFO：参数:None
+2021-01-29 16:57:58,611  [requestmd -- sendrequest -- 第38行]，INFO：URL:https://www.baidu.com
+2021-01-29 16:57:58,999  [requestmd -- getresponse -- 第72行]，INFO：用例名：访问百度
+2021-01-29 16:57:59,003  [requestmd -- sendrequest -- 第31行]，INFO：Headers:{'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.104 Safari/537.36'}
+2021-01-29 16:57:59,005  [requestmd -- sendrequest -- 第34行]，INFO：Method:GET
+2021-01-29 16:57:59,008  [requestmd -- sendrequest -- 第36行]，INFO：参数:None
+2021-01-29 16:57:59,010  [requestmd -- sendrequest -- 第38行]，INFO：URL:https://www.baidu.com1

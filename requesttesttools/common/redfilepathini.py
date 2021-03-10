@@ -68,8 +68,35 @@ class ReadIni:
         path = self.iniconfig.get("LOGSPATH", "logspath")
         return getfullpathmethod(path)
 
+    def readexcel_list(self):
+        # 先将字符串读取出来
+        strpathlist = self.iniconfig.get("EXCELPATH", "testcaselist")
+        if strpathlist != None:
+            pathlist = strpathlist.split(",")
+            return pathlist
+
+    def get_current_path(self, path):
+        """通过传参，获取当前文件的完整的文件路径"""
+        return getfullpathmethod(path)
+
+    def get_excel_json_dict(self):
+        keylist = []
+        valuelist = []
+        strdata = self.iniconfig.get("EXCEL-JSON", "excel_json")
+        list1 = strdata.split(",")
+        if len(list1) % 2 == 0:
+            for i in range(len(list1)):
+                if i == 0 or i % 2 == 0:
+                    keylist.append(list1[i])
+                else:
+                    valuelist.append(list1[i])
+            excel_dict = dict(zip(keylist, valuelist))
+            return excel_dict
+
 
 if __name__ == '__main__':
-    print(ReadIni().readjson())
-    # a = ReadIni()
+    # print(ReadIni().readexcel())
+    read = ReadIni()
+    s = read.get_excel_json_dict()
+    print(s)
     pass

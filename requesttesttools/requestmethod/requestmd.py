@@ -65,8 +65,8 @@ class RequestMethod:
 
     # 获取响应数据json或者text格式
     def getresponse(self, row):
-        # 如果用例是需要执行的，通过是否执行字段来控制用例执行
-        if self.exceldata.read_is_excute(row) != False:
+        # 如果用例是需要执行的，通过是否执行字段来控制用例执行,(已经在参数化中跳过不执行的用例，这里的判定主要用于单独调试某条用例)
+        if self.exceldata.read_is_excute(row) != False and self.exceldata.read_is_excute(row) != None:
             # 打印用例名字/用例描述
             add_logs().info("用例名：{}".format(self.exceldata.read_casename(row)))
             # print(self.exceldata.read_casename(row))
@@ -76,7 +76,7 @@ class RequestMethod:
                 try:
                     # 尝试获取json格式的返回数据
                     responsedata = response.json()
-                    add_logs().info("json格式完整的响应数据{}:".format(responsedata))
+                    add_logs().info("json格式完整的响应数据：{}".format(responsedata))
                     return responsedata
                 except:
                     # 获取文本格式的返回数据
@@ -87,6 +87,10 @@ class RequestMethod:
                 # 如果响应为空，返回
                 add_logs().warning("没有获取到响应数据")
                 return
+        else:
+            # self.exceldata.read_is_excute(row) == False:
+            add_logs().info("跳过该用例")
+            return
 
     """ 
     对上下文相关的接口进行处理，获取相关参数，更新到下个请求中
@@ -113,16 +117,45 @@ class RequestMethod:
                 # 如果正则表达式存在，响应数据存在
                 if regular != None and response != None:
                     try:
-                        data = self.getregular_data(regular, response.json())
-                        add_logs().info("通过json提取出数据成功:{}".format(data))
+                        # 将读取到的提取规则分割
+                        jsonkey = regular.split("-")
+                        if len(jsonkey) >= 2:
+                            response = response.json()
+                            add_logs().info("前置用例的响应数据json格式：{}".format(response))
+                            for i in jsonkey:
+                                response = response[i]
+                            if self.exceldata.read_dependent_param_type(row) == "LIST":
+                                list1 = []
+                                list1.append(response)
+                                data = list1
+                                add_logs().info("通过json提取出数据成功:{}".format(data))
+                            else:
+                                data = response
+                                add_logs().info("通过json提取出数据成功:{}".format(data))
+                        # 逻辑问题
+                        else:
+                            add_logs().info("前置用例的响应数据json格式：{}".format(response.json()))
+                            data = self.getregular_data(regular, response.json())
+                            add_logs().info("通过json提取出数据成功:{}".format(data))
                     except:
+                        add_logs().info("前置用例的响应数据text格式：{}".format(response.text))
                         data = self.getregular_data(regular, response.text)
                         add_logs().info("通过正则表达式匹配文本提取数据成功:{}".format(data))
 
                     # 如果data不为空,key不为空
                     if data and key:
-                        value = data[0]
-                        return {key: value}
+                        if self.exceldata.read_dependent_param_type(row) == "LIST":
+                            # # 将字符转换为数字后的参数列表，如果有的参数必须要int类型的，之后优化时可以参考
+                            # paramslist = []
+                            # for i in data:
+                            #     if i.isdigit:
+                            #         i = int(i)
+                            #         paramslist.append(i)
+                            # return {key: paramslist}
+                            return {key: data}
+                        else:
+                            value = data[0]
+                            return {key: value}
                     else:
                         add_logs().error("没有匹配到需要更新的数据，或者key值不存在")
 
@@ -154,11 +187,13 @@ class RequestMethod:
 
     # 获取真实的响应结果
     def get_actual_result(self, row):
+
         # 拿到响应数据，json或者text格式的
         response = self.getresponse(row)
         # 如果期望值为空，则进行请求获得响应数据
         if self.exceldata.read_expect(row) == None:
             return response
+
         # 如果期望值不为空，则进行请求获得期望数据
         else:
             regular = self.exceldata.read_regular(row)
@@ -169,7 +204,21 @@ class RequestMethod:
                 # return actual_result[0]
                 # 提取json数据
                 try:
-                    return response[regular]
+                    #将json的匹配字段以“-”分割为列表
+                    data = regular.split("-")
+                    #如果列表存在，就遍历列表中的字段
+                    if data:
+                        for i in data:
+                            #如果字段中有数字，将其转换为整数
+                            if i.isdigit():
+                                i = int(i)
+                            #循环遍历获取要取得的真实响应值
+                            response = response[i]
+                    #没有列表，就直接进行匹配
+                    else:
+                        return response[regular]
+                    # 返回匹配的结果
+                    return response
                 # 提取正则字段匹配数据
                 except:
                     actual_result = re.findall(regular, str(response))
@@ -186,4 +235,6 @@ if __name__ == '__main__':
     # for row in range(2, 8):
     #     print(RequestMethod().get_actual_result(row))
         # print(RequestMethod().getresponse(row))
-    print(RequestMethod().getresponse(4))
+    print(RequestMethod().get_actual_result(40))
+    # session:ddd9f510-7be8-11eb-b1f2-4de4946d79ce
+    # session:69971ec0-7be9-11eb-b1f2-4de4946d79ce

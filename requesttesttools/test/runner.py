@@ -28,7 +28,7 @@ class Runner:
                                 title="BAT接口测试报告",
                                 tester="L",
                                 desc="测试报告",
-                                templates=1)
+                                templates=2)
         # 运行
         test_runer.run()
 

@@ -1,4 +1,6 @@
 import openpyxl, re
+import requests
+from common.addlogs import add_logs
 from common.readjsondata import read_json_data
 from common.redfilepathini import ReadIni
 from config.EXCELcells import ExcelCells
@@ -9,17 +11,25 @@ class ReadExcelData:
 
     def __init__(self):
         # 实例化ReadIni类，用于获取Excel的路径
-        getdata = ReadIni()
+        self.getdata = ReadIni()
         # 通过readexcel方法，获取excel文件的完整路径
-        excelfile = getdata.readexcel()
+        self.excelfile = self.getdata.readexcel()
         # 打开excel文件，准备进行读取
-        workbook = openpyxl.load_workbook(excelfile)
+        self.workbook = openpyxl.load_workbook(self.excelfile)
         # 从配置文件中读取Sheet页的名字
-        sheet = getdata.redexcelsheet()
+        self.sheet = self.getdata.redexcelsheet()
         # 获取excel数据，并将其公有化
-        self.exceldata = workbook[sheet]
+        self.exceldata = self.workbook[self.sheet]
         # 实例化ExcelCells类，用于获取表格单元格的常量，比如A列单元格
         self.excelcell = ExcelCells()
+        # 将json参数文件提升为一个变量
+        self.jsonfile = self.getdata.readjson()
+
+    def write_excel_data(self, column, row, data):
+        """写入excel，请在写入时关闭表格"""
+        if data:
+            self.exceldata["{}{}".format(column, row)].value = data
+            self.workbook.save(self.excelfile)
 
     def read_excel_data(self, column, row):
         """
@@ -38,21 +48,30 @@ class ReadExcelData:
         """
         column = self.excelcell.CELL_REQUEST_URL
         url = self.read_excel_data(column, row)
-        if url != None:
-            # 如果URL中带有ms_session参数，将其更换为最新的参数
-            if "ms_session" in url:
-                session = self.read_session()
-                session = re.subn(":", "%3A", session)
-                session = session[0]
-                # regular = re.compile("ms_session=(.+?)")
-                str1 = re.findall("&ms_session=(.+?)&", url)
+        if "ksuperminiapp" in url:
+            newurl = url.split("ksuperminiapp")[1]
+            befurl = self.readu_r_l()
+            url = befurl + "/ksuperminiapp" + newurl
 
-                url = re.subn(str1[0], session, url)
-                return url[0]
-            else:
-                return url
+        if url != None:
+            try:
+                if "ms_session" in url:
+                    session = self.read_session()
+                    session = re.subn(":", "%3A", session)
+                    session = session[0]
+                    # regular = re.compile("ms_session=(.+?)")
+                    str1 = re.findall("&ms_session=(.+?)&", url)
+                    # str1 = re.findall("ms_session=(.+?)", url)
+
+                    url = re.subn(str1[0], session, url)
+
+                    return url[0]
+                else:
+                    return url
+            except:
+                add_logs().error("URL中的session格式错误，无法更新到最新的session")
         else:
-            print("数据错误")
+            add_logs().error("url为空，请检查数据")
             return False
 
     def read_case_id(self, row):
@@ -81,7 +100,7 @@ class ReadExcelData:
         """
         column = self.excelcell.CELL_REQUEST_PARAMS
         paramstitle = self.read_excel_data(column, row)
-        parmas = read_json_data().get(paramstitle)
+        parmas = read_json_data(self.jsonfile).get(paramstitle)
         if parmas != None:
             if "ms_session" in parmas:
                 parmas["ms_session"] = self.read_session()
@@ -99,7 +118,7 @@ class ReadExcelData:
         """
         column = self.excelcell.CELL_REQUEST_HEADERS
         headerstitle = self.read_excel_data(column, row)
-        headers = read_json_data().get(headerstitle)
+        headers = read_json_data(self.jsonfile).get(headerstitle)
         # 将headers中的session更换为最新的
         if headers != None:
             if "ms_session" in headers:
@@ -181,7 +200,10 @@ class ReadExcelData:
         :return:
         """
         column = self.excelcell.CELL_SESSION
-        return self.read_excel_data(column, 2)
+        session = self.read_excel_data(column, 2)
+        # session = self.get_Session()
+        if session != None:
+            return session
 
     # 参数化数据
     def paramsexpectdata(self):
@@ -189,16 +211,70 @@ class ReadExcelData:
         对用例执行时进行参数化配置，在参数化中调用该方法，即可传入相关参数
         :return:
         """
+        #返回的参数列表
         self.list1 = []
-        for row in range(2, self.get_max_row() + 1):
-            expect = self.read_expect(row)
-            self.list1.append((row, expect))
+        #参数化excel文件和json文件
+        for excelfile,jsonfile in self.getdata.get_excel_json_dict().items():
+            curren_excel = excelfile
+            curren_json = jsonfile
+            self.excelfile = self.getdata.get_current_path(curren_excel)
+            self.jsonfile = self.getdata.get_current_path(curren_json)
+            #参数化sheet页
+            for i in self.workbook.sheetnames:
+                self.sheet = i
+                self.exceldata=self.workbook[self.sheet]
+                #参数化期望字段，和行数
+                for row in range(2, self.get_max_row() + 1):
+                    # 控制用例是否执行
+                    if self.read_is_excute(row) != False:
+                        expect = self.read_expect(row)
+                        self.list1.append((row, expect,self.sheet, self.excelfile, self.jsonfile))
+                    else:
+                        add_logs().info("跳过该条用例：{}".format(self.read_casename(row)))
         return self.list1
+
+    def readu_r_l(self):
+        """读取测试环境"""
+        column = self.excelcell.U_R_L
+        u = self.read_excel_data(column, 2)
+        if u:
+            return u
+
+    def read_dependent_param_type(self, row):
+        """
+        读取依赖参数的类型，默认字典的value，LIST->返回一个参数列表
+        :param row:
+        :return:
+        """
+        colunm = self.excelcell.DEPENDENT_PARAMS_TYPE
+        type = self.read_excel_data(colunm, row)
+        if type != None:
+            return type
+
+    def get_Session(self):
+        """没用，废弃"""
+        requests.packages.urllib3.disable_warnings()  # 避免https报错
+        parmas = {"appid": "wxd5647f839d12c83a",
+                  "clienttype": "wxapp",
+                  "version": "3.0.0",
+                  "mpkey": "mp_f0eecb40-23e0-11eb-8fd0-bbf1de6a814e",
+                  "mininfo_id": "564",
+                  "productcode": "ksuperminiapp"}
+        url = self.readu_r_l() + "/ksuperminiapp/api/login/getSession"
+        data = requests.get(params=parmas, url=url, verify=False)
+        response = data.json()
+        if response:
+            res = response["data"]
+            # return res
+            column = self.excelcell.CELL_SESSION
+            self.write_excel_data(column=column, row=2, data=res)
 
 
 if __name__ == '__main__':
     # print(type(ReadExcelData().get_max_column))
     e = ReadExcelData()
-    s = e.read_headers(4)
-    print(s)
+
+
+
+    print(e.paramsexpectdata())
     pass

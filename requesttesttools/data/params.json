@@ -45,9 +45,43 @@
     "order":"asc",
     "storeId":"0"
   },
-  "HEADERS_TEST_002": {
-    "User-Agent": "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.104 Safari/537.36"
-  },
+  "HEADERS_TEST_002": {"User-Agent": "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.104 Safari/537.36"},
   "TEST_PARAMS_005" : {"cart_isbuynow":1,"cart_goodsid":1625,"cart_number":1,"cart_goodsattr":"","cart_goodstype":0,"extension_id":""},
-  "TEST_PARAMS_006" : {"live_event_id":"","userbargain_id":"","isEquity":true,"mpkey":"mp_f0eecb40-23e0-11eb-8fd0-bbf1de6a814e","isbuynow":"1","cartids":"35038","remark":"","payid":"","volumeid":"","favourablecardid":0,"favourablecardvalue":"0.00","redpacketid":"","orderactiveid":"","orderactiveindex":"","addrid":116,"extensiontype":0,"fronturl":"","distributorid":0,"clienttype":"wxapp","team_act_id":"","team_id":0,"is_privilege":0,"egoods_id":"","productcode":"ksuperminiapp","storeId":"","equityId":832,"useIntegral":0,"storeUserName":"","storeUserMobile":"","taskId":"","userId":"","businessIds":"","forwardKey":""}
+  "TEST_PARAMS_006" : {"live_event_id":"","userbargain_id":"","isEquity":true,"mpkey":"mp_f0eecb40-23e0-11eb-8fd0-bbf1de6a814e","isbuynow":"1","cartids":"35038","remark":"","payid":"","volumeid":"","favourablecardid":0,"favourablecardvalue":"0.00","redpacketid":"","orderactiveid":"","orderactiveindex":"","addrid":116,"extensiontype":0,"fronturl":"","distributorid":0,"clienttype":"wxapp","team_act_id":"","team_id":0,"is_privilege":0,"egoods_id":"","productcode":"ksuperminiapp","storeId":"","equityId":832,"useIntegral":0,"storeUserName":"","storeUserMobile":"","taskId":"","userId":"","businessIds":"","forwardKey":""},
+  "TEST_PARAMS_008":{"visitlog_access_url":"/pages/my/my","visitlog_depth":2,"visitlog_bc":false},
+  "TEST_PARAMS_010":{"productcode":1625,"ms_session": "session:6d914730-44bc-11eb-b0d3-87514629a1ec"},
+  "TEST_PARAMS_012":{"mpkey":"mp_f0eecb40-23e0-11eb-8fd0-bbf1de6a814e","ms_session": "session:6d914730-44bc-11eb-b0d3-87514629a1ec"},
+  "TEST_PARAMS_013":{"ms_session": "session:6d914730-44bc-11eb-b0d3-87514629a1ec","pageIndex":1,"pageSize":10},
+  "TEST_PARAMS_014":{"ms_session": "session:6d914730-44bc-11eb-b0d3-87514629a1ec"},
+  "TEST_PARAMS_016":{"ms_session": "session:6d914730-44bc-11eb-b0d3-87514629a1ec"},
+  "TEST_PARAMS_017":{"distributor_site_name": "分销店铺铺","ms_session": "session:6d914730-44bc-11eb-b0d3-87514629a1ec"},
+  "TEST_PARAMS_018":{"distributor_vipid": "id_b3c1db40-436b-11eb-b0d3-87514629a1ec","ms_session": "session:6d914730-44bc-11eb-b0d3-87514629a1ec"},
+  "TEST_PARAMS_019":{"goods_id": 1630},
+  "TEST_PARAMS_021":{
+					"appid":"wxd5647f839d12c83a",
+					"clienttype":"wxapp",
+					"version":"3.0.0",
+					"mpkey":"mp_f0eecb40-23e0-11eb-8fd0-bbf1de6a814e",
+					"mininfo_id":"564",
+					"ms_session":"session:d20d5e50-7cad-11eb-b1f2-4de4946d79ce",
+					"productcode":"ksuperminiapp",
+					"status":"1",
+					"pageIndex":"1",
+					"pageSize":"10",
+					"userid": "id_c7a77660-7c66-11e9-a4ec-13ad1a341425"
+					},
+  "TEST_PARAMS_022":{"miniappnav_id": 564,"ms_session": "session:6d914730-44bc-11eb-b0d3-87514629a1ec"},
+  "TEST_PARAMS_023":{"order_field":"cat_order","order_opt":"asc"},
+  "TEST_PARAMS_024":{"ms_session": "session:6d914730-44bc-11eb-b0d3-87514629a1ec","cat_id":553},
+  "TEST_PARAMS_025":{"pageIndex":"1","pageSize":"20"},
+  "TEST_PARAMS_026":{"pageIndex":"","pageSize":""},
+  "TEST_PARAMS_027":{"goods_name":"","team_act_status":0,"team_act_teamcate_id":"","pageIndex":1,"pageSize":10},
+  "TEST_PARAMS_028":{"goods_name":"","team_act_status":0,"team_act_teamcate_id":"","pageIndex":"","pageSize":10},
+  "TEST_PARAMS_029":{"pageIndex":"1","pageSize":10,"team_act_id":70},
+  "TEST_PARAMS_030":{"pageIndex":"1","pageSize":10,"team_act_id":1},
+  "TEST_PARAMS_031":{"pageIndex":"1","pageSize":10,"team_act_id":"字符"},
+  "TEST_PARAMS_032":{"pay_type":"weapp","order_ids":[9877],"subject":"来自水果大王网站的订单","pay_description":1},
+  "TEST_PARAMS_035":{"pay_type":"weapp","order_ids":[9877],"subject":"来自水果大王网站的订单","pay_description":1},
+  "TEST_PARAMS_036":{"pay_type":"weapp","order_ids":[987777],"subject":"来自水果大王网站的订单","pay_description":1},
+  "TEST_PARAMS_022":{"ms_session": "session:6d914730-44bc-11eb-b0d3-87514629a1ec"}
 }

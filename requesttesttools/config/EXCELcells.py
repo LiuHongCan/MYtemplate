@@ -11,3 +11,5 @@ class ExcelCells:
     CELL_EXPECT = "J"
     CELL_ISEXCUTE = "K"
     CELL_SESSION = "L"
+    U_R_L = "M"
+    DEPENDENT_PARAMS_TYPE = "N"

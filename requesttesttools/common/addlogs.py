@@ -31,4 +31,4 @@ def add_logs():
     return BATlog
 
 if __name__ == '__main__':
-    print(add_logs().info("打印日志"))
+    add_logs().info("打印日志")
